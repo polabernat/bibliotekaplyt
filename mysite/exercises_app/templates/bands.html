@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Nazwa zespołu:</b> {{name}} <br><b> gatunek: </b> {{genre}} <br>
+    <b>rok założenia:</b> {{release_year}} <br> <b> aktywny:</b> {{still_active}} <b> historia zespołu:</b> {{history}}</div>  <ul>
+    {%for alb in albums%}
+        <li><i><b>{{alb.title}}</b> {{alb.release_year}} {{alb.get_grade_display}} <br></i></li>    {%endfor%}
+    </ul></body>
+</html>

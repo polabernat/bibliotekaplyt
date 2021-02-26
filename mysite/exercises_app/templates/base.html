@@ -1,0 +1,12 @@
+<!doctype html>
+        <html>
+            <head><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css"></head>
+            <body style="background-color: {{ color }}">
+                <img src="/static/logo.png">
+                <h1>Twoja bliblioteka płyt</h1>
+                {% block content %}{% endblock %}
+            <br><br>
+
+                <footer>Witaj {{ user.username }}, twoje hasło: {{ user.password }}</footer>
+            </body>
+        </html>
