@@ -1,4 +1,6 @@
 from django.test import TestCase
+from .models import User,
+from django.contrib.auth.models import User, Permission
 
 # Create your tests here.
 #Główne funkcjonalności aplikacji, powinny być pokryte testami
@@ -35,3 +37,25 @@ class AlbumModelTest(TestCase):
         max_length = album._meta.get_field('band_name').max_length
         self.assertEqual(max_length, 64)
 
+class Connected(TestCase):
+    def process_request(self, request):
+        try:
+            "SELECT * FROM Band"
+            success = True
+        except:
+            success = False
+        request.db_connection_successful = success
+
+class UserLogged(TestCase):
+    def process_request(self, request):
+        try:
+            "SELECT name FROM auth_user WHERE name='Dudek'"
+            success = True
+        except:
+            success = False
+        request.db_connection_successful = success
+
+@pytest.mark.django_db
+def test_add_song_missing_permission(user, unauthorised_user, test_user):
+    user.force_login(unauthorised_user)
+    response = user.post('/add-song', {})

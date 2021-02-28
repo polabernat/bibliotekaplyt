@@ -9,13 +9,13 @@ class Band(models.Model):
 
     GENRES = [
         (-1, "not defined"),
-        (0, "rock"),
+        (0, "classic rock"),
         (1, "metal"),
-        (2, "pop"),
-        (3, "hip-hop"),
-        (4, "electronic"),
-        (5, "reggae"),
-        (6, "other")
+        (2, "rock'n'roll"),
+        (3, "new wave"),
+        (4, "punk"),
+        (5, "heavy metal"),
+        (6, "progressive")
     ]
 
     genre = models.IntegerField(choices=GENRES, default=-1)
@@ -52,10 +52,11 @@ class Song(models.Model):
     duration = models.TimeField(null=True)
     album = models.ForeignKey(Album, on_delete=models.CASCADE, null=True)
     def __repr__(self):
-        return f'<Article: {self.title})>'
+        return f'<Article: {self.title}) ({self.id})>'
     def __str__(self):
         return self.title
     band = models.ManyToManyField(Band)
+
 
 
 

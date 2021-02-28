@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from exercises_app.views import LoginView, UserProfileView, ListUsersView, LogoutView, AddUserView, HistoryView, ListBandsView, show_band
+from exercises_app.views import LoginView, UserProfileView, ListUsersView, LogoutView, AddUserView, HistoryView, ListBandsView, show_band, BandAddView, AlbumAddView, SongAddView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -27,4 +27,7 @@ urlpatterns = [
     path('user_profile/', UserProfileView.as_view()),
     path('list_bands/', ListBandsView.as_view()),
     path('/show-band/<int:id>/',show_band),
+    path('add_band/', BandAddView.as_view()),
+    path('add_song/', SongAddView.as_view()),
+    path('add_album/', AlbumAddView.as_view()),
 ]

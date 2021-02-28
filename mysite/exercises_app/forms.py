@@ -1,7 +1,7 @@
 import django.forms as forms
 from django.core.validators import EmailValidator, URLValidator
 
-from .models import History
+from .models import History, Song, Band, Album
 from .validators import validate_login, ValidationError
 
 class LoginForm(forms.Form):
@@ -33,3 +33,23 @@ class HistoryModelForm(forms.ModelForm):
     class Meta:
         model = History
         exclude = ['date_sent']
+
+class SongAddForm(forms.Form):
+    class Meta:
+        model = Song
+        exclude = ['date_sent']
+
+class BandAddForm(forms.Form):
+    class Meta:
+        model = Band
+        exclude = ['date_sent']
+
+class AlbumAddForm(forms.Form):
+    class Meta:
+        model = Album
+        exclude = ['date_sent']
+
+
+
+
+
